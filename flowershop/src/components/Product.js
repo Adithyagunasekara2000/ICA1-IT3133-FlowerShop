@@ -2,11 +2,17 @@ import './layout.css';
 import {useState} from 'react'
 export default function Product(props){
     const [inputData,setInputData]=useState({});
+    const [cartItem,setCartItem]=useState([]);
 
     const handleInput=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
         setInputData(values=>({...values,[name]:value}))
+    }
+
+    const handleCart=(flower)=>{
+        const quantity=inputData[flower.name]?.quantity||0;
+        setCartItem((prev)=>[...prev,inputData[flower.name]])
     }
     return(
         <div className="grid-item">
