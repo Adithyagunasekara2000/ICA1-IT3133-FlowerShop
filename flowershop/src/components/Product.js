@@ -1,56 +1,55 @@
-import Cart from './Cart';
 import './layout.css';
-import {useState} from 'react'
+import Product from './Product';
+import { flowers } from './FlowerDB';
+import Cart from './Cart';
+import { useState } from 'react';
 
+export default function Products(props) {
+  const [cartItems, setCartItems] = useState([]);
+  const [inputData, setInputData] = useState({});
+ 
+  const handleInput = (event, flowerName) => {
+    const value = event.target.value;
+    setInputData((prev) => ({
+      ...prev,
+      [flowerName]: { quantity: value }
+    }));
+  };
 
-export default function Product(props){
-    const [inputData,setInputData]=useState({});
-    const [cartItem,setCartItem]=useState([]);
-   
-   
-    const handleInput=(event)=>{
-        const name=event.target.name;
-        const value=event.target.value;
-        setInputData(values=>({...values,[name]:value}))
+  const handleCart = (flower) => {
+    const quantity = inputData[flower.name]?.quantity || 0;
+    if (quantity > 0) {
+      // Call the parent function to update the cart state
+      props.handleAddToCart(flower, quantity);
     }
+  };
 
-    const handleCart=(flower)=>{
-        const quantity=inputData[flower.name]?.quantity||0;
-        if(quantity>0){
-        setCartItem((prev)=>[...prev,{ ...flower, quantity }])
-    }};
-
-
-    return(
-        <div className="grid-item">
-          
-           
-            { props.flowers.map((flower,index)=>(
- <div class="card">
-            <div class="card-body">
-                <div key={index}>
-                <h5 class="card-title">{flower.name} Price:{flower.price}</h5> 
-                    <img src={require(`../assests/image/${flower.img}`)}/> 
-                    
-                    
-                   
-            
-                    <div class="quantity-container">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value={inputData.quantity||0} onChange={handleInput}/>
-                    </div>
-                    <button class="card-button" onClick={() => handleCart(flower)}>Add to Cart</button>
-               
-                   </div>
-                   </div>  
-                   </div>
-                 
-              
-           ))
-        }
-       <Cart cartItems={cartItem} />
-     
-        </div>    
-       
-    );
+  return (
+    <div className="grid-item">
+      {props.flowers.map((flower, index) => (
+        <div className="card" key={index}>
+          <div className="card-body">
+            <h5 className="card-title">
+              {flower.name} Price: {flower.price}
+            </h5>
+            <img src={require(`../assests/image/${flower.img}`)} alt={flower.name} />
+            <div className="quantity-container">
+              <label htmlFor="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                value={inputData[flower.name]?.quantity || 0}
+                onChange={(e) => handleInput(e, flower.name)}
+              />
+            </div>
+            <button className="card-button" onClick={() => handleCart(flower)}>
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }

@@ -22,7 +22,7 @@ export default function Cart({cartItems}) {
         </tbody>
                 <tr>
                     <td >Grand Total : </td>
-                    <td colSpan={2}>Grand Total</td>
+                    <td colSpan={2}>{totalPrice}</td>
                 </tr>
             </table>
            
