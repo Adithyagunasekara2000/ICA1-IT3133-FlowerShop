@@ -2,10 +2,10 @@
 import './layout.css';
 import Product from './Product';
 import {flowers} from './FlowerDB';
-import Cart from './Cart'
 import { useState } from 'react';
+import Cart from './Cart'
 export default function Products(){
-    const [cartItems, setCartItems] = useState([]); 
+    const [cartItems, setCartItems] = useState([]);
     return(
         <>
             <div className="item1">
