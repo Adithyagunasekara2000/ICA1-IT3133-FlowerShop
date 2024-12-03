@@ -1,4 +1,10 @@
-export default function Cart() {
+export default function Cart(props) {
+    const calculateGrandTotal = () => {
+        return props.cartItems.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        );
+      };
     
     return (
         <div className="table-container">
@@ -11,9 +17,15 @@ export default function Cart() {
                     <td>Price</td>
 
                 </thead>
-                {
-                    
-                }
+                
+                     {props.cartItems.map((item, index) => (
+                        <tr key={index}>
+                          <td>{item.name}</td>
+                          <td>{item.quantity}</td>
+                          <td>{item.price * item.quantity}</td>
+                        </tr>
+                      ))}
+                
                 <tr>
                     <td >Grand Total : </td>
                     <td colSpan={2}>Grand Total</td>

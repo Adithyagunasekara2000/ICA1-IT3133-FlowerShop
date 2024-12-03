@@ -3,8 +3,9 @@ import './layout.css';
 import Product from './Product';
 import {flowers} from './FlowerDB';
 import Cart from './Cart'
+import { useState } from 'react';
 export default function Products(){
-   
+    const [cartItems, setCartItems] = useState([]); 
     return(
         <>
             <div className="item1">
@@ -20,7 +21,7 @@ export default function Products(){
 
             </div>
             <div className="item3">
-          
+            <Cart cartItems={cartItems} />
             </div>
         </>
     );

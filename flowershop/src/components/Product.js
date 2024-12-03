@@ -39,7 +39,10 @@ export default function Product(props){
                         <label for="quantity">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" value={inputData.quantity||0} onChange={handleInput}/>
                     </div>
-                    <button class="card-button" onClick={()=>handleCart(flower)}>Add to Cart</button>
+                    <button class="card-button"  onClick={() => {
+                const quantity = inputData[flower.name]?.quantity || 0;
+                props.addToCart(flower, quantity);
+              }}>Add to Cart</button>
                
                    </div>
                    </div>  
