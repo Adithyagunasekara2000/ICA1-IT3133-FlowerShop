@@ -1,9 +1,10 @@
 import './layout.css';
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 export default function Product(props){
     const [inputData,setInputData]=useState({});
     const [cartItem,setCartItem]=useState([]);
-
+    const navigate=useNavigate();
     const handleInput=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
@@ -14,6 +15,10 @@ export default function Product(props){
         const quantity=inputData[flower.name]?.quantity||0;
         setCartItem((prev)=>[...prev,inputData[flower.name]])
     }
+
+    const handleViewCart = () => {
+        navigate('/cart', { state: { cartItem } });
+    };
     return(
         <div className="grid-item">
           
@@ -32,7 +37,7 @@ export default function Product(props){
                         <label for="quantity">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" value={inputData.quantity||0} onChange={handleInput}/>
                     </div>
-                    <button class="card-button">Add to Cart</button>
+                    <button class="card-button" onClick={handleCart}>Add to Cart</button>
                
                    </div>
                    </div>  
