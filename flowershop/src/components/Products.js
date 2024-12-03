@@ -1,6 +1,7 @@
 
-import '../assets/CSS/layout.css';
-
+import './layout.css';
+import Product from './Product';
+import {flowers} from './FlowerDB';
 
 export default function Products(){
    
@@ -12,9 +13,7 @@ export default function Products(){
             <div className="item2">
                 <h4 className="card-title">Buy flowers</h4>
                 <div className="grid-container">
-                    {
-                        //product
-                    }
+                  <Product flowers={flowers}/>
                 </div>
 
             </div>

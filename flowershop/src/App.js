@@ -1,4 +1,4 @@
-import './assets/CSS/layout.css';
+import './components/layout.css'
 import Products from './components/Products';
 
 function App() {

@@ -1,20 +1,42 @@
-import '../assets/CSS/layout.css';
-export default function Product(){
-    
+import './layout.css';
+import {useState} from 'react'
+export default function Product(props){
+    const [inputData,setInputData]=useState({});
+
+    const handleInput=(event)=>{
+        const name=event.target.name;
+        const value=event.target.value;
+        setInputData(values=>({...values,[name]:value}))
+    }
     return(
         <div className="grid-item">
-
-            <div class="card">
-                <img  />
-                <div class="card-body">
-                    <h5 class="card-title">Price:</h5>
+          
+           
+            { props.flowers.map((flower,index)=>(
+ <div class="card">
+            <div class="card-body">
+                <div key={index}>
+                <h5 class="card-title">{flower.name} Price:{flower.price}</h5> 
+                    <img src={require(`../assests/image/${flower.img}`)}/> 
+                    
+                    
+                   
+            
                     <div class="quantity-container">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" />
+                        <input type="number" id="quantity" name="quantity" value={inputData.quantity||0} onChange={handleInput}/>
                     </div>
                     <button class="card-button">Add to Cart</button>
-                </div>
-            </div>
-        </div>
+               
+                   </div>
+                   </div>  
+                   </div>
+                 
+              
+           ))
+        }
+     
+        </div>    
+       
     );
 }
