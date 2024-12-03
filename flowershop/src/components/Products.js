@@ -2,7 +2,7 @@
 import './layout.css';
 import Product from './Product';
 import {flowers} from './FlowerDB';
-
+import Cart from './Cart'
 export default function Products(){
    
     return(
@@ -14,13 +14,13 @@ export default function Products(){
                 <h4 className="card-title">Buy flowers</h4>
                 <div className="grid-container">
                   <Product flowers={flowers}/>
+                
+     
                 </div>
 
             </div>
             <div className="item3">
-                {
-                //cart
-                }
+          
             </div>
         </>
     );
