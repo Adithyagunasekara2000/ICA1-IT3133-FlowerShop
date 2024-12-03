@@ -19,7 +19,7 @@ export default function Products(props) {
   const handleCart = (flower) => {
     const quantity = inputData[flower.name]?.quantity || 0;
     if (quantity > 0) {
-      // Call the parent function to update the cart state
+      
       props.handleAddToCart(flower, quantity);
     }
   };

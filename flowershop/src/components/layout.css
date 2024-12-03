@@ -1,14 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
 .grid-container {
 display: grid;
-
 row-gap: 10px;
 column-gap: 2px;
 grid-template-columns: auto auto auto auto;
@@ -51,8 +50,8 @@ grid-area: cart;
 .main-grid-container {
 display: grid;
 grid-template-areas:
-  'header header header header header header header'
-  'main main main main main cart cart';
+'header header header header header header header'
+'main main main main main cart cart';
 gap: 10px;
 background-color: rgba(255, 255, 255, 0.8);
 padding: 10px;
